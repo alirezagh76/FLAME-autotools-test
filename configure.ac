@@ -23,7 +23,7 @@ dnl fortran available (e. g. Fortran95). Then FC variable
 dnl is set.
 AC_PROG_FC([], [Fortran 90])
 AC_FC_SRCEXT(f90)
-dnl AC_FC_LINE_LENGTH([unlimited])
+AC_FC_LINE_LENGTH([unlimited])
 AC_FC_WRAPPERS()
 
 dnl Give the name of file.in to transform to file
