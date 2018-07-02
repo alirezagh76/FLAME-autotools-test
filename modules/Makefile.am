@@ -1,6 +1,6 @@
-noinst_LIBRARIES: libmodules.a
+noinst_LIBRARIES = libmodules.a
 
-libmodules_a_SOURCES_ =  task_mod.F90 unitsconversion_mod.F90 processors_mod.F90 atoms_mod.F90 \
+libmodules_a_SOURCES =  task_mod.F90 unitsconversion_mod.F90 processors_mod.F90 atoms_mod.F90 \
 		linked_lists_mod.F90 \
 		constants_mod.F90 \
 		spline_mod.F90 \
