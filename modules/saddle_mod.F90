@@ -7,19 +7,19 @@ module mod_saddle
     !real(8):: alphax=-1.d0
     !real(8):: fnrmtol
     real(8):: beta=-1.d0
-    real(8):: epotprime
-    integer:: maxitec
-    integer:: maxitsd
-    integer:: maxitcg
+    real(8):: epotprime = 0
+    integer:: maxitec = 0
+    integer:: maxitsd = 0
+    integer:: maxitcg = 0
     integer:: nmatr=-1
-    integer:: moving_atoms_rand(10)
-    integer:: nit !total number of iteration.
-    logical:: ecconverged
-    logical:: sdconverged
-    logical:: cgconverged
-    logical:: dmconverged
-    logical:: do_elim_trans
-    logical:: do_elim_rot
-    character(256):: str_moving_atoms_rand
+    integer:: moving_atoms_rand(10) =0
+    integer:: nit=0 !total number of iteration.
+    logical:: ecconverged=.false.
+    logical:: sdconverged=.false.
+    logical:: cgconverged=.false.
+    logical:: dmconverged=.false.
+    logical:: do_elim_trans=.false.
+    logical:: do_elim_rot=.false.
+    character(256):: str_moving_atoms_rand=' '
 end module mod_saddle
 !*****************************************************************************************

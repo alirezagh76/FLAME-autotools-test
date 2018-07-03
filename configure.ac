@@ -13,7 +13,7 @@ AC_CONFIG_HEADERS(config.h)
 dnl Init something, don't know exactly what...
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE(-Wno-portability)
+AM_INIT_AUTOMAKE([--warnings=no-portability, subdir-objects])
 prefix_pwd=$(pwd)
 AC_PREFIX_DEFAULT([$prefix_pwd])
 
@@ -22,14 +22,28 @@ dnl looks for a modern Fortran compiler, prefering newest
 dnl fortran available (e. g. Fortran95). Then FC variable
 dnl is set.
 AC_PROG_FC([], [Fortran 90])
+AC_PROG_F77([], [Fortran 77])
 AC_FC_SRCEXT(f90)
+AC_LANG(Fortran)
 AC_FC_LINE_LENGTH([unlimited])
 AC_FC_WRAPPERS()
+
+AC_PROG_CC()
+AC_PROG_CXX()
+
+dnl Check for existence of other options
+AX_EXTRA([LAMMPS])
+AX_EXTRA([SPGLIB])
+
+dnl Check for sed and put it in the SED variable
+AC_PROG_SED()
 
 dnl Give the name of file.in to transform to file
 AC_CONFIG_FILES([
 Makefile
 modules/Makefile
+src/Makefile
+src/lenosky_tb/Makefile
 ])
 
 AC_OUTPUT

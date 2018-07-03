@@ -45,14 +45,14 @@ module mod_minhopp
     integer:: nlminx=-1 !number of local minima to be found including nlmin. 
     integer:: nlmin_l=0
     integer:: nstep=0
-    integer:: nlmin_old
+    integer :: nlmin_old =0
     integer:: minter=1 !interval for writing intermediate results
     integer, parameter:: nbuf=1000 
     integer:: npminx=1000 !maximum number of minima whose configurations will be stored
     real(8):: eref=-1.d50 !reference energy.
     !real(8):: accur
     !real(8):: accur !accuracy for rounding.
-    real(8):: ekin
+    real(8):: ekin =0
     real(8):: av_ekinetic=0.d0
     real(8):: av_ediff=0.d0
     integer:: istep=0
@@ -67,10 +67,10 @@ module mod_minhopp
     real(8):: esep=0.d0
     !real(8):: erat
     real(8):: etoler=1.d-2
-    real(8):: re_sm
+    real(8):: re_sm =0
     !real(8):: erathopp
-    real(8):: dt !time step in MD.
-    real(8):: ediff !upper bound for energy difference to accept the hopping.
+    real(8):: dt =0 !time step in MD.
+    real(8):: ediff=0.0d0 !upper bound for energy difference to accept the hopping.
     real(8):: count_md=0.d0
     real(8):: count_opt=0.d0
     real(8):: count_soften=0.d0
@@ -81,14 +81,14 @@ module mod_minhopp
     real(8):: fcall_tot_all_md=0.d0
     real(8):: fcall_tot_all_opt=0.d0
     real(8):: fcall_tot_all_soften=0.d0
-    logical:: newmin
-    logical:: escaped
+    logical:: newmin = .false.
+    logical:: escaped = .false.
     !logical:: write_results_now=.false.
     logical:: lprint=.true.
     logical:: die=.false.
     integer:: nrandoff=0
     integer:: nsoften=7
-    real(8):: alpha_soften
+    real(8):: alpha_soften =0
     integer:: kerathopp=1 
     integer, allocatable:: itagintermediate(:)
     integer, allocatable:: mtagarr1(:)
