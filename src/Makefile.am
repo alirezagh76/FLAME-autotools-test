@@ -2,7 +2,7 @@ noinst_LIBRARIES= libsrc.a libclowlevel.a
 
 SUBDIRS = lenosky_tb
 
-all: libsrc.a ofiles/basic_c_wrappers.o ofiles/input_variables_definition.o
+all: libsrc.a basic_c_wrappers.o input_variables_definition.o
 
 bin_PROGRAMS = flame
 
@@ -112,7 +112,7 @@ endif
 if HAVE_SPGLIB
 	LIB_SPGLIB =  $(SPGLIB_ROOT)/src/.libs/libsymspg.a
 	SPGLIB_EX = $(SPGLIB_ROOT)/example/
-	SPGLIB_OBJ= ofiles/spglib_f08.o
+	SPGLIB_OBJ= spglib_f08.o
 	LIBS+= $(LIB_SPGLIB)
 	override PRE_PROC+= -DSPGLIB
 endif
