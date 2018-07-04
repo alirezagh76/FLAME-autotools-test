@@ -1,0 +1,23 @@
+#This is the configuration file for the BigDFT installer
+#This is a python script which is executed by the build suite 
+ 
+#Add the condition testing to run tests and includes PyYaml
+conditions.add("testing")
+#List the module the this rcfile will build
+modules = ['futile',]
+#example of the potentialities of the python syntax in this file
+def env_configuration():
+    return  """ "FC=mpif90" "FCFLAGS= -shared-intel -mkl=sequential" "CC=mpicc"  """ 
+#the following command sets the environment variable to give these settings
+#to all the modules
+import os
+os.environ['BIGDFT_CONFIGURE_FLAGS']=env_configuration()
+#here follow the configuration instructions for the modules built
+#we specify the configurations for the modules to customize the options if needed
+module_autogenargs.update({
+   
+'libyaml': env_configuration(),
+   
+'futile': env_configuration(),
+   
+})
