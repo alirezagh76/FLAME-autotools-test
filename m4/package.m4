@@ -20,3 +20,6 @@ AC_DEFUN([AX_EXTRA],
   fi
   AM_CONDITIONAL(HAVE_$1, test "$ax_have_lcv" = "yes")
 ])
+
+AC_ARG_VAR([SPGLIB_ROOT], [spglib root path])
+

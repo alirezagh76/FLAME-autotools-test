@@ -86,17 +86,13 @@ minhocao_src = potential_alborz.F90  potential_corerepulsion.F90\
 		fingerprint_atorb.F90 fingerprint_gaussmol.F90\
 		fingerprint_XYZ2SM.F90 atoms_minhocao.F90 minhocao.F90
 
-if HAVE_SPGLIB
-    SRC_ += spglib_int.F90
-endif
-
 #dependencies
 potential_main_minhocao.o: potential_abinit.o
 
 libsrc_a_SOURCES = $(SRC_) $(minhocao_src)
 
 flame_SOURCES = alborz.F90
-flame_LDADD= libsrc.a  $(top_builddir)/modules/libmodules.a lenosky_tb/liblenosky.a libclowlevel.a
+flame_LDADD = libsrc.a  $(top_builddir)/modules/libmodules.a lenosky_tb/liblenosky.a libclowlevel.a
 
 libclowlevel_a_SOURCES = $(_SOURCES_CPP) $(_SOURCES_C)
 
@@ -110,11 +106,11 @@ if HAVE_LAMMPS
 endif
 
 if HAVE_SPGLIB
-	LIB_SPGLIB =  $(SPGLIB_ROOT)/src/.libs/libsymspg.a
-	SPGLIB_EX = $(SPGLIB_ROOT)/example/
-	SPGLIB_OBJ= spglib_f08.o
-	LIBS+= $(LIB_SPGLIB)
-	override PRE_PROC+= -DSPGLIB
+libsrc_a_SOURCES += spglib_f08.f90 spglib_int.F90
+AM_FCFLAGS += -DSPGLIB 
+LIBS += $(SPGLIB_ROOT)/src/.libs/libsymspg.a
+spglib_f08.f90:
+	ln -s $(SPGLIB_ROOT)/example/spglib_f08.f90 spglib_f08.f90
 endif
 
 EXTRA_DIST = 
