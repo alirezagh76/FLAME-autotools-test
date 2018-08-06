@@ -107,6 +107,7 @@ endif
 
 if HAVE_SPGLIB
 libsrc_a_SOURCES += spglib_f08.f90 spglib_int.F90
+spglib_int.o: spglib_f08.o
 AM_FCFLAGS += -DSPGLIB 
 LIBS += $(SPGLIB_ROOT)/src/.libs/libsymspg.a
 spglib_f08.f90:
