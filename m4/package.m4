@@ -21,6 +21,7 @@ AC_DEFUN([AX_EXTRA],
   AM_CONDITIONAL(HAVE_$1, test "$ax_have_lcv" = "yes")
 ])
 
+AC_ARG_VAR([LAMMPS_ROOT], [lammps root path])
 AC_ARG_VAR([SPGLIB_ROOT], [spglib root path])
 AC_ARG_VAR([BDIR], [BigDFT root path])
 

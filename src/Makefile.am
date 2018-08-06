@@ -9,12 +9,15 @@ bin_PROGRAMS = flame
 SRC_F = minpack/dpmpar.f minpack/enorm.f  minpack/lmder.f minpack/lmpar.f minpack/qrfac.f minpack/qrsolv.f
 
 AM_FCFLAGS = -I$(top_builddir)/modules/
-
+AM_CPPFLAGS = -DQSC_STANDALONE
 
 SRC_ = $(SRC_F)
 
 if HAVE_LAMMPS
-    SRC_ += potential_LAMMPS_interface.F90 potential_LAMMPS.F90 lammps_mod.F90
+SRC_ += potential_LAMMPS_interface.F90 potential_LAMMPS.F90 lammps_mod.F90
+AM_FCFLAGS += -DHAVE_LAMMPS
+AM_CPPFLAGS += -I$(LAMMPS_ROOT)/src
+LIBS += $(LAMMPS_ROOT)/src/liblammps_mpi.a
 endif
 
 SRC_ += alborz_init_final.F90 processors.F90 \
@@ -123,8 +126,6 @@ endif
 EXTRA_DIST = 
 
 YAML_DATABASE = input_variables_definition.yaml
-
-AM_CPPFLAGS = -DQSC_STANDALONE
 
 CLEANFILES = *.mod *.MOD 
 
