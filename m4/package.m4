@@ -22,4 +22,5 @@ AC_DEFUN([AX_EXTRA],
 ])
 
 AC_ARG_VAR([SPGLIB_ROOT], [spglib root path])
+AC_ARG_VAR([BDIR], [BigDFT root path])
 

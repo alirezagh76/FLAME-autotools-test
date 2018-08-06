@@ -22,6 +22,11 @@ libmodules_a_SOURCES =  task_mod.F90 unitsconversion_mod.F90 processors_mod.F90 
 AM_FCFLAGS = -I. -O
 AM_CFLAGS=-I$(top_builddir)
 
+if HAVE_BPS
+AM_FCFLAGS += -I$(BDIR)/install/include
+AM_FCFLAGS += -DHAVE_BPS
+endif
+
 CLEANFILES = *.mod *.MOD
 
 

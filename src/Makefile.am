@@ -113,6 +113,12 @@ spglib_f08.f90:
 	ln -s $(SPGLIB_ROOT)/example/spglib_f08.f90 spglib_f08.f90
 endif
 
+if HAVE_BPS
+override LIBS := -L$(BDIR)/install/lib/ -lPSolver-1 $(LIBS)
+AM_FCFLAGS += -I$(BDIR)/install/include
+AM_FCFLAGS += -DHAVE_BPS
+endif
+
 EXTRA_DIST = 
 
 YAML_DATABASE = input_variables_definition.yaml
